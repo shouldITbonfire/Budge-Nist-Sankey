@@ -1,0 +1,38 @@
+<html>
+    <head>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+              google.charts.load('current', {'packages':['sankey']});
+              google.charts.setOnLoadCallback(drawChart);
+        
+              function drawChart() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'From');
+                data.addColumn('string', 'To');
+                data.addColumn('number', 'Weight');
+                data.addRows([
+                  [ 'Ticket Software', 'Asset', 1 ],
+                  [ 'Asset', 'Identify', 2 ],
+                  [ 'SCCM', 'Asset', 1],
+                  [ 'SCCM', 'Maintenance', 1 ],
+                  [ 'Maintenance', 'Protect', 1]
+                ]);
+        
+                // Sets chart options.
+                var options = {
+                  width: 1400,
+                };
+        
+                // Instantiates and draws our chart, passing in some options.
+                var chart = new google.visualization.Sankey(document.getElementById('sankey_basic'));
+                chart.draw(data, options);
+              }
+            </script>
+    </head>
+        <body>
+            <h1> This is a heading </h1>
+            <p> This is my paragraph space.  This is what this project is for.</p>
+            <h2> Start Draw </h2>
+                <div id="sankey_basic" style="width: 900px; height: 300px;"></div>
+        </body>
+</html>
